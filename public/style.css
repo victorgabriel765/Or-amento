@@ -1,14 +1,37 @@
 * {
     padding: 0;
     margin: 0;
-}  
+    font-family: "Roboto", sans-serif
+}
+/* Variaveis das cores e Dimencoes das caixas */
+:root {
+    --cor-de-fundo: #0033A0;
+    --titulo: #FFD700;
+    --texto-e-rotulo: #FFFFFF;
+    --botoes: #FFD700;
+    --texto-botao: #0033A0;
+    --inputs: #FFFFFF;
+    --borda-input: #CCCCCC;
+    --area-resultado: #E63946;
+    --texto-resultado: #FFFFFF;
+}
 
 body {
-    width:100vh ;
-    
+    background-color: var();
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
- 
-.inputBox{
+
+.conteiner {
+    border-radius: 5px;
+    height: 450px;
+    width: 600px; 
+}
+
+.inputBox {
     display: flex;
     flex-direction: column;
 }
@@ -18,7 +41,8 @@ body {
     flex-direction: column;
 }
 
-.estriboInfo, .metroInfo,
+.estriboInfo,
+.metroInfo,
 .inforPrice {
     display: flex;
     flex-direction: column;
@@ -29,4 +53,17 @@ body {
     display: inline-flex;
     gap: 0.5rem;
 
+}
+
+/* Estilizacao */
+
+/* inputs */
+
+.inputBoxInline input,
+.inputBox input,
+.inputBox select {
+    background-color: var(--inputs);
+    border: solid 2px var(--borda-input);
+    border-radius: 7px;
+    height: 1.7rem;
 }

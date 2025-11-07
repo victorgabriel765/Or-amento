@@ -28,8 +28,6 @@ const DOM = {
 
  limpar: document.getElementById('clear'),
  calcular: document.getElementById('btnCalcular'),
- preco: document.getElementById('')
-
 }
 
 const calcular = () => {
@@ -74,16 +72,18 @@ const calculoVergalhao = () => {
 const calculoEst = () => {
   const largura = convert(DOM.largura.value).from('cm').to('mm')
   const altura = convert(DOM.altura.value).from('cm').to('mm')
-  const qtdEtb = DOM.quantidadeEstribo.value
+  const qtdEtb = +DOM.quantidadeEstribo.value
   const ferro = DOM.mmEstribo.value
+
 
   if (largura=== '' || altura === '' || qtdEtb=== '' || ferro === 'padrao') {
     alert('Preencha todos os campos corretamente!')
     return
   }
-
-  console.log(largura, altura, qtdEtb, ferro)
-
+  // Exibicao do resultado 
+  DOM.preco.innerText = estribo(largura, altura, qtdEtb)
+  DOM.medidaEstribo.innerText = `${DOM.largura.value} x ${DOM.altura.value}`
+  DOM.infoEstribo.innerText = ferro
 }
 const calculoCompleto = () => {
   // inputs do vergalhão ------>
@@ -102,8 +102,6 @@ const calculoCompleto = () => {
     return
   } 
   DOM.preco.innerText = orcamentoCompleto(DOM.quantidadeBarra.value, comprimento, espacamento, largura, altura)
-
-  console.log(DOM.mmEstribo.value)
 
 }
 
