@@ -15,6 +15,7 @@ const DOM = {
   altura: document.getElementById('alturaEtb'),
   mmEstribo: document.getElementById('diametroEtb'),
   espacamento: document.getElementById('espacamento'),
+  quantidadeEstribo: document.getElementById('qtdEtb'),
 
   // Exibicao
 
@@ -71,30 +72,17 @@ const calculoVergalhao = () => {
 }
 
 const calculoEst = () => {
-  const largura = document.getElementById('larguraEtb')
-  const altura = document.getElementById('alturaEtb')
-  const qtdEtb = document.getElementById('qtdEtb')
-  const ferro = document.getElementById('diametroEtb')
+  const largura = convert(DOM.largura.value).from('cm').to('mm')
+  const altura = convert(DOM.altura.value).from('cm').to('mm')
+  const qtdEtb = DOM.quantidadeEstribo.value
+  const ferro = DOM.mmEstribo.value
 
-  if (largura.value === '' || altura.value === '' || qtdEtb.value === '' || ferro.value === 'padrao') {
+  if (largura=== '' || altura === '' || qtdEtb=== '' || ferro === 'padrao') {
     alert('Preencha todos os campos corretamente!')
     return
   }
 
-  const largConvertida = convert(largura.value).from('cm').to('mm')
-  const altConvertida = convert(altura.value).from('cm').to('mm')
-
-  console.log(estribo(largConvertida, altConvertida, qtdEtb.value))
-
-  // Exibir resultado para o usuario 
-
-  const tamanhoEtb = document.getElementById('infoMedidas')
-  const fettoEtb = document.getElementById('infoFerro')
-
-
-  tamanhoEtb.innerText = `${largura.value} x ${altura.value}`
-  fettoEtb.innerText = `${ferro.value}`
-  document.getElementById('infoPreco').innerText = estribo(largConvertida, altConvertida, qtdEtb.value)
+  console.log(largura, altura, qtdEtb, ferro)
 
 }
 const calculoCompleto = () => {
@@ -126,7 +114,6 @@ const clear = () => {
       return 
     }
     el.value = ''
-    console.log('Passou aqui')
   })
 }
 
