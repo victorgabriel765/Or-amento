@@ -1,0 +1,6 @@
+# Ignora a pasta de dependências
+node_modules/
+
+# Ignora outros arquivos grandes comuns
+
+# Adicione aqui quaisquer outros arquivos grandes

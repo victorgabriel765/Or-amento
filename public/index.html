@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer type="module" src="./index.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Calculadora de orçamento</title>
+</head>
+
+<body>
+  <main class="conteiner">
+    <h1>Calculadora orçamento</h1>
+
+    <!-- Vergalhão -->
+    <section class="vergalhao">
+      <h3>Vergalhão</h3>
+
+      <!-- Inputs Vergalhão -->
+      <div class="inputBox">
+        <label for="diametro">Diâmetro do Vergalhão (mm):</label>
+        <select name="diametro" id="diametro">
+          <option value="padrao">Selecione Vergalhão</option>
+          <option value="3/8">10mm</option>
+          <option value="5/8">5/8</option>
+          <option value="1/4">3/8</option>
+        </select>
+      </div>
+
+      <div class="inputBoxInline">
+        <div>
+          <label for="comprimento">Comprimento (m):</label><br />
+          <input type="number" name="comprimento" id="comprimento" />
+        </div>
+        <div>
+          <label for="qtdBarras">Quantidade de barras:</label><br />
+          <input type="number" name="qtdBarras" id="qtdBarras" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Estribos -->
+    <section class="estribo">
+      <h3>Estribos</h3>
+      <div class="inputBox">
+        
+        <label for="diametroEtb">Diâmetro do estribo:</label>
+        <select name="diametroEtb" id="diametroEtb">
+          <option value="padrao">MM do estribo</option>
+          <option value="1/4">1/4</option>
+        </select>
+      </div>
+
+      <div class="inputBoxInline" id="inputEtb">
+        <div>
+          <label for="larguraEtb">Largura (cm):</label><br />
+          <input type="number" name="larguraEtb" id="larguraEtb" />
+        </div>
+        <div>
+          <label for="larguraEtb">Altura (cm):</label><br />
+          <input type="number" name="alturaEtb" id="alturaEtb" />
+        </div>
+        <div>
+          <label for="espacamento">Espaçamento:</label><br />
+          <input type="number" name="espacamento" id="espacamento" />
+        </div>
+      </div>
+      <div class="inputBox">
+        <label for="qtdEtb">Quantidade de estribo: </label>
+        <input type="number" name="qtdEtb" id="qtdEtb" />
+      </div>
+    </section>
+
+    <!-- Botões de ação -->
+    <section class="btn">
+      <button id="btnCalcular">Calcular</button>
+      <button><a href="#">Preços</a></button>
+      <button id="clear">Limpar</button>
+    </section>
+
+    <!-- Caixa de Informação -->
+    <section class="boxInfo">
+      <div class="estriboInfo">
+        <div>
+          <p>Medidas do estribo: <span id="infoMedidas">7x14</span></p>
+        </div>
+        <div>
+          <p>Ferro estribo (mm): <span id="infoFerro"></span></p>
+        </div>
+         <div>
+          <p>Quantidade de Estribos: <span id="infoQtd"></span></p>
+        </div>
+      </div>
+
+      <div class="metroInfo">
+        <div style="display: none;">
+          <p>Metragem: <span id="infoMetragem"></span></p>
+        </div>
+      </div>
+
+      <div class="infoPrice">
+        <div>
+          <p>Valor Total: <span id="infoPreco"></span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <div class="tipoOrçamento">
+    <select name="tipoOrcamento" id="tipoOrcamento">
+      <option value="padrao">Selecione tipo do orçamento</option>
+      <option value="vergalhao">Vergalhão</option>
+      <option value="estribo">Estribo</option>
+      <option value="completo">Completo Vergalhão + Estribo</option>
+    </select>
+  </div>
+</body>
+
+</html>

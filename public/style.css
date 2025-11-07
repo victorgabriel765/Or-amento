@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+}  
+
+body {
+    width:100vh ;
+    
+}
+ 
+.inputBox{
+    display: flex;
+    flex-direction: column;
+}
+
+.boxInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.estriboInfo, .metroInfo,
+.inforPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inputBoxInline {
+    display: inline-flex;
+    gap: 0.5rem;
+
+}
