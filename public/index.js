@@ -43,6 +43,9 @@ const calcular = () => {
     case 'completo':
       calculoCompleto()
       break
+    case 'padrao':
+      alert('Selecione um tipo de orçamento!')
+      break  
     default:
       break;
   }
@@ -51,22 +54,18 @@ const calcular = () => {
 
 const calculoVergalhao = () => {
 
-  const ferragem = document.getElementById('diametro')
-  const orcamento = document.getElementById('tipoOrcamento')
-  const comprimento = document.getElementById('comprimento')
-  const qtdBarras = document.getElementById('qtdBarras')
-  // Verificação do tipo de orçamento
-  if (orcamento.value === 'vergalhao') {
-    // Verificação sa os campos estão preenchidos
-    if (comprimento.value === "" || qtdBarras.value === "" || ferragem.value === "padrao") {
-      alert('Preencha todos os campos corretamente!')
-      return
-    }
-    const cpmConvertido = convert(comprimento.value).from('m').to('mm')
-    vergalhao(qtdBarras, cpmConvertido)
-    document.getElementById('infoPreco').innerText = vergalhao(qtdBarras.value, cpmConvertido)
+  const ferragem = DOM.mmVergalhao.value
+  const comprimento = convert(DOM.comprimentoBarra.value).from('m').to('mm')
+  const qtdBarras = DOM.quantidadeBarra.value
+
+  if (ferragem === 'padrao' || comprimento === '' || qtdBarras === '') {
+    alert('Preencha todos os campos corretamente!')
+    return
   }
 
+  // Exibicao do resultado
+  DOM.preco.innerText = vergalhao(qtdBarras, comprimento)
+  
 }
 
 const calculoEst = () => {
@@ -102,7 +101,8 @@ const calculoCompleto = () => {
     return
   } 
   DOM.preco.innerText = orcamentoCompleto(DOM.quantidadeBarra.value, comprimento, espacamento, largura, altura)
-
+  DOM.medidaEstribo.innerText = `${DOM.largura.value} x ${DOM.altura.value}`
+  DOM.infoEstribo.innerText = mmEstribo
 }
 
 const clear = () => {
@@ -115,6 +115,33 @@ const clear = () => {
   })
 }
 
+const confgDisplay = () => {
+  const tipoOrcamento = DOM.orcamento.value
+  const divEstribo = document.querySelector('.estribo')
+  const divVergalhao = document.querySelector('.vergalhao')
+
+  switch (tipoOrcamento) {
+    case 'vergalhao':
+      divEstribo.style.display = 'none' 
+      divVergalhao.style.display = 'block'
+      break;
+    case 'estribo':
+      divEstribo.style.display = 'block' 
+      divVergalhao.style.display = 'none'
+      break
+    case 'completo':
+      divEstribo.style.display = 'block' 
+      divVergalhao.style.display = 'block'
+      divEstribo.querySelector('#qtdEtb').style.display = 'none'
+      break     
+
+    default:
+      divEstribo.style.display = 'none' 
+      divVergalhao.style.display = 'none'
+      break;
+  }
+}
+
 document.getElementById('btnCalcular').addEventListener('click', function () {
  calcular()
 })
@@ -122,53 +149,10 @@ document.getElementById('btnCalcular').addEventListener('click', function () {
 DOM.limpar.addEventListener('click', () => {
   clear()
 })
-// Configuraçao do display 
-document.getElementById('tipoOrcamento').addEventListener('change', () => {
 
-  const orcamento = document.getElementById('tipoOrcamento')
-  const estbClass = document.querySelector('.estribo')
-  const vergalhaoClass = document.querySelector('.vergalhao')
-  const subClassEstb = document.querySelector('#inputEtb')
-  const classInfo = document.querySelectorAll('.boxInfo')
-
-
-  if (orcamento.value === 'vergalhao') {
-    clear()
-    vergalhaoClass.style.display = ''
-    estbClass.style.display = 'none' 
-    // Removendo as informações não compativel com a seleção. 
-    classInfo.forEach((el) => {
-      el.querySelector('.estriboInfo').style.display = 'none'
-    })
-
-  } else if (orcamento.value === 'estribo') {
-    clear()
-    estbClass.style.display = ''
-    vergalhaoClass.style.display = 'none'
-    subClassEstb.children[2].style.display = 'none'
-
-    // Adicionando as informações compativel com a seleção.
-    classInfo.forEach((el) => {
-      el.querySelector('.estriboInfo').style.display = ''
-    })
-
-    estbClass.querySelectorAll('.inputBox')[1].style.display = ''
-
-
-  } else if (orcamento.value === 'completo') {
-    clear()
-    estbClass.style.display = ''
-    vergalhaoClass.style.display = ''
-    subClassEstb.children[2].style.display = ''
-
-    // Adicionando as informações compativel com a seleção.
-    classInfo.forEach((el) => {
-      el.querySelector('.estriboInfo').style.display = ''
-    })
-
-    estbClass.querySelectorAll('.inputBox')[1].style.display = 'none'
-  }
-
+DOM.orcamento.addEventListener('change', () => {
+  confgDisplay()
 })
+ 
 
 
