@@ -1,0 +1,100 @@
+* {
+    padding: 0 ;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+:root {
+    --cor-de-fundo: #0033A0;
+    --titulo: #FFD700;
+    --texto-e-rotulo: #FFFFFF;
+    --botoes: #FFD700;
+    --texto-botao: #0033A0;
+    --inputs: #FFFFFF;
+    --borda-input: #CCCCCC;
+    --area-resultado: #E63946;
+    --texto-resultado: #FFFFFF;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    
+    background-color: var(--cor-de-fundo);
+}
+
+#conteiner {
+ height: 23rem ;
+ width: 23rem;  
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+h1 {
+    color: var(--titulo);
+    font-size:50px;
+    left: 10px;
+}
+
+h2 {
+    position: relative;
+    right: 108px;
+    top: -10px;
+    color: var(--texto-e-rotulo);
+    font-weight: 400;
+}
+
+
+.selects label{
+    color:var(--texto-e-rotulo);
+    font-size: 20px;
+}
+
+.selects select {
+    width: 20rem;
+    height: 1.8rem;
+    border-radius: 4px;
+    outline: none;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.precosExibidos {
+    position: relative;
+    margin-top: 1.1rem;
+    right: 130px;
+}
+
+.precosExibidos li {
+    list-style: none;
+    padding-bottom: 10px;
+    color: var(--texto-resultado);
+    font-size: 20px;
+}
+
+.boxButton button {
+    height: 2.5rem;
+    width: 7.5rem;
+    border-radius: 4px;
+    border: none;
+    color: var(--texto-botao);
+    background-color: var(--botoes);
+    font-size: 22px;
+    font-weight:700;
+    cursor: pointer;
+ 
+    
+}
+
+.boxButton a {
+    text-decoration: none;
+ }   
+
+ .boxButton button:hover {
+     filter: brightness(0.9);
+ }   
